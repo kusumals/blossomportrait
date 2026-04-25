@@ -1,13 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import all fonts used in the Title Font dropdown */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lobster&family=Pacifico&family=Playfair+Display:wght@600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(160deg, #fff5f7 0%, #fff 60%);
+  min-height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Ensure system fallbacks for generic fonts */
+.font-georgia { font-family: Georgia, 'Times New Roman', serif; }
+.font-comic { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; }
+
+html {
+  scroll-behavior: smooth;
 }
