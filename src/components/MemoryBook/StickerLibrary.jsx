@@ -22,9 +22,9 @@ const StickerLibrary = ({ onAdd, onAddImage }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-sm">
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="font-semibold text-gray-700">🎨 Stickers</h3>
+    <div className="bg-white rounded-xl p-3 sm:p-4 shadow-sm">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+        <h3 className="font-semibold text-gray-700 text-sm sm:text-base">🎨 Stickers</h3>
         <button
           onClick={() => fileRef.current.click()}
           className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-lg hover:bg-pink-200"
@@ -41,7 +41,7 @@ const StickerLibrary = ({ onAdd, onAddImage }) => {
           <button
             key={i}
             onClick={() => setActiveGroup(i)}
-            className={`text-xs px-2 py-1 rounded-full transition-colors ${activeGroup === i ? 'bg-pink-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-pink-100'}`}
+            className={`text-xs px-2 py-1 rounded-full transition-colors whitespace-nowrap ${activeGroup === i ? 'bg-pink-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-pink-100'}`}
           >
             {g.label}
           </button>
@@ -54,7 +54,7 @@ const StickerLibrary = ({ onAdd, onAddImage }) => {
           <button
             key={sticker}
             onClick={() => onAdd(sticker)}
-            className="text-2xl p-1 rounded-lg hover:bg-pink-50 hover:scale-125 transition-transform"
+            className="text-xl sm:text-2xl p-1 rounded-lg hover:bg-pink-50 hover:scale-125 transition-transform"
           >
             {sticker}
           </button>

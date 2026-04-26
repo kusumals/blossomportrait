@@ -23,13 +23,13 @@ const PhotoUpload = ({ onImageUpload }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-6">
+    <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
       {!preview ? (
         <div
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
           onDragLeave={() => setDragging(false)}
           onDrop={handleDrop}
-          className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all ${
+          className={`border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all ${
             dragging ? 'border-pink-400 bg-pink-50 scale-[1.01]' : 'border-pink-200 hover:border-pink-400 hover:bg-pink-50'
           }`}
         >
@@ -41,14 +41,14 @@ const PhotoUpload = ({ onImageUpload }) => {
             id="photo-upload"
           />
           <label htmlFor="photo-upload" className="cursor-pointer block">
-            <div className="text-6xl mb-4">{dragging ? '🌸' : '📸'}</div>
-            <p className="text-gray-600 font-semibold text-lg">
+            <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{dragging ? '🌸' : '📸'}</div>
+            <p className="text-gray-600 font-semibold text-base sm:text-lg">
               {dragging ? 'Drop it here!' : 'Choose your favourite photo'}
             </p>
             <p className="text-gray-400 text-sm mt-1">
               Drag & drop or <span className="text-pink-500 font-semibold">click to browse</span>
             </p>
-            <p className="text-gray-300 text-xs mt-3">JPG, PNG, WEBP supported</p>
+            <p className="text-gray-300 text-xs mt-2 sm:mt-3">JPG, PNG, WEBP supported</p>
           </label>
         </div>
       ) : (
@@ -56,12 +56,12 @@ const PhotoUpload = ({ onImageUpload }) => {
           <img
             src={preview}
             alt="Your photo"
-            className="max-h-72 rounded-2xl shadow-md mx-auto object-cover"
+            className="max-h-56 sm:max-h-72 rounded-2xl shadow-md mx-auto object-cover w-full max-w-sm"
           />
-          <p className="text-green-500 font-semibold mt-4">✓ Looking great!</p>
+          <p className="text-green-500 font-semibold mt-3 sm:mt-4 text-sm sm:text-base">✓ Looking great!</p>
           <label
             htmlFor="photo-upload"
-            className="text-sm text-pink-500 hover:underline cursor-pointer mt-1 block"
+            className="text-sm text-pink-500 hover:underline cursor-pointer mt-1 sm:mt-2 block"
           >
             Choose a different photo
           </label>

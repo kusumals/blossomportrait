@@ -177,10 +177,10 @@ const MemoryBook = ({ initialImage, onBack }) => {
         <p className="text-gray-500">Design your cover, add pages, decorate with stickers!</p>
       </div>
 
-      <div className="flex gap-2 mb-6 bg-white rounded-xl p-2 shadow-sm">
+      <div className="flex gap-2 mb-4 sm:mb-6 bg-white rounded-xl p-2 shadow-sm overflow-x-auto">
         <button
           onClick={() => setActiveTab('cover')}
-          className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
+          className={`flex-1 py-2 px-3 sm:px-4 rounded-lg font-medium transition-colors text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'cover' ? 'bg-pink-600 text-white' : 'text-gray-600 hover:bg-pink-50'
           }`}
         >
@@ -188,7 +188,7 @@ const MemoryBook = ({ initialImage, onBack }) => {
         </button>
         <button
           onClick={() => setActiveTab('pages')}
-          className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
+          className={`flex-1 py-2 px-3 sm:px-4 rounded-lg font-medium transition-colors text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'pages' ? 'bg-pink-600 text-white' : 'text-gray-600 hover:bg-pink-50'
           }`}
         >
@@ -196,7 +196,7 @@ const MemoryBook = ({ initialImage, onBack }) => {
         </button>
         <button
           onClick={() => setShowPreview(true)}
-          className="flex-1 py-2 px-4 rounded-lg font-medium bg-purple-500 text-white hover:bg-purple-600"
+          className="flex-1 py-2 px-3 sm:px-4 rounded-lg font-medium bg-purple-500 text-white hover:bg-purple-600 text-xs sm:text-sm whitespace-nowrap"
         >
           👁️ Preview
         </button>
@@ -213,8 +213,8 @@ const MemoryBook = ({ initialImage, onBack }) => {
       )}
 
       {activeTab === 'pages' && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:6">
+          <div className="lg:col-span-1 order-2 lg:order-1">
             <PagesList
               pages={book.pages}
               selectedPageId={selectedPageId}
@@ -224,7 +224,7 @@ const MemoryBook = ({ initialImage, onBack }) => {
               onReorder={reorderPages}
             />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-1 lg:order-2">
             {selectedPage && (
               <PageEditor
                 page={selectedPage}
@@ -239,12 +239,12 @@ const MemoryBook = ({ initialImage, onBack }) => {
         </div>
       )}
 
-      <div className="fixed bottom-6 right-6">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
         <button
           onClick={() => setShowPreview(true)}
-          className="bg-pink-600 text-white p-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105"
+          className="bg-pink-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105 text-sm sm:text-base"
         >
-          ✨ Continue to Preview
+          ✨ Continue
         </button>
       </div>
     </div>

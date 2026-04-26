@@ -73,17 +73,17 @@ const PageEditor = ({ page, pageNumber, onUpdate }) => {
       {/* Page Preview Container - Click to add stickers */}
       <div
         ref={containerRef}
-        className="relative rounded-2xl p-6 flex flex-col items-center shadow-sm w-[448px] mx-auto"
+        className="relative rounded-2xl p-4 sm:p-6 flex flex-col items-center shadow-sm w-full max-w-[448px] mx-auto"
         style={{
           backgroundColor: page.color || '#FFF5E1',
           border: page.border !== 'none' ? page.border : 'none',
-          minHeight: '320px'
+          minHeight: '280px'
         }}
         onClick={handleContainerClick}
       >
         {/* Photo */}
         {page.photos && page.photos.length > 0 && page.photos[0] ? (
-          <div className="relative mb-4 flex-shrink-0 overflow-hidden" style={{ width: '400px', height: '300px' }}>
+          <div className="relative mb-4 flex-shrink-0 overflow-hidden w-full max-w-[400px] aspect-[4/3]">
             <img 
               src={page.photos[0]} 
               alt="Page photo" 
@@ -103,11 +103,10 @@ const PageEditor = ({ page, pageNumber, onUpdate }) => {
           </div>
         ) : (
           <div
-            className="mb-4 flex-shrink-0 flex items-center justify-center cursor-pointer border-2 border-dashed border-pink-300 rounded-lg"
+            className="mb-4 flex-shrink-0 flex items-center justify-center cursor-pointer border-2 border-dashed border-pink-300 rounded-lg w-full max-w-[400px] aspect-[4/3]"
             onClick={() => fileRef.current.click()}
-            style={{ width: '400px', height: '300px' }}
           >
-            📷 Add Photo
+            <span className="text-gray-400 text-sm">📷 Add Photo</span>
           </div>
         )}
 
@@ -115,12 +114,12 @@ const PageEditor = ({ page, pageNumber, onUpdate }) => {
 
         {/* Text with alignment */}
         {page.text && (
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md px-2">
             <div 
-              className="text-gray-700 bg-white/50 p-4 rounded-lg" 
+              className="text-gray-700 bg-white/50 p-3 sm:p-4 rounded-lg text-sm sm:text-base" 
               style={{ 
                 fontFamily: page.textFont || 'Georgia, serif', 
-                fontSize: '16px', 
+                fontSize: '14px', 
                 lineHeight: '1.6',
                 textAlign: page.textAlign || 'center'
               }}
@@ -136,9 +135,9 @@ const PageEditor = ({ page, pageNumber, onUpdate }) => {
 
         {/* Empty state */}
         {(!page.photos || page.photos.length === 0) && !page.text && (
-          <div className="flex flex-col items-center justify-center py-12 text-gray-400">
-            <span className="text-5xl mb-2">✨</span>
-            <p className="text-sm" style={{ fontFamily: 'Comic Sans MS, cursive', fontWeight: 'bold' }}>Empty page</p>
+          <div className="flex flex-col items-center justify-center py-8 sm:py-12 text-gray-400">
+            <span className="text-4xl sm:text-5xl mb-2">✨</span>
+            <p className="text-xs sm:text-sm" style={{ fontFamily: 'Comic Sans MS, cursive', fontWeight: 'bold' }}>Empty page</p>
           </div>
         )}
 

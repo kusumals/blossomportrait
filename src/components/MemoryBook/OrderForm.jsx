@@ -155,30 +155,30 @@ const OrderForm = ({ book, onBack, onDownload }) => {
 
   if (submitted) {
     return (
-      <div className="text-center py-12 max-w-md mx-auto">
-        <div className="text-7xl mb-5">🌸</div>
-        <h2 className="text-3xl font-bold text-gray-800 mb-3">Order Confirmed!</h2>
-        <p className="text-gray-500 text-lg mb-2">
+      <div className="text-center py-8 sm:py-12 max-w-md mx-auto px-3">
+        <div className="text-5xl sm:text-7xl mb-4 sm:mb-5">🌸</div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Order Confirmed!</h2>
+        <p className="text-gray-500 text-base sm:text-lg mb-2">
           Thank you, <strong className="text-pink-600">{form.name}</strong>! 💕
         </p>
-        <p className="text-gray-500 mb-5">We'll verify your payment and call you at <strong>{form.phone}</strong> to confirm.</p>
+        <p className="text-gray-500 mb-4 sm:mb-5 text-sm sm:text-base">We'll verify your payment and call you at <strong>{form.phone}</strong> to confirm.</p>
 
-        <div className="bg-pink-50 rounded-2xl p-4 text-left text-sm text-gray-600 mb-5 space-y-1">
+        <div className="bg-pink-50 rounded-2xl p-3 sm:p-4 text-left text-sm text-gray-600 mb-4 sm:mb-5 space-y-1">
           <p>📦 <strong>Package:</strong> {selectedPkg.label} — {selectedPkg.price}</p>
           <p>📍 <strong>Delivering to:</strong> {form.address}, {form.pincode}</p>
           <p>💳 <strong>UTR:</strong> {form.utr}</p>
         </div>
 
-        <div className="bg-green-50 border border-green-200 rounded-2xl p-5 mb-6">
-          <p className="font-bold text-gray-700 mb-1">📲 One last step!</p>
-          <p className="text-sm text-gray-500 mb-4">Download your book and send it to us on WhatsApp so we can print it exactly as you designed.</p>
+        <div className="bg-green-50 border border-green-200 rounded-2xl p-4 sm:p-5 mb-5 sm:mb-6">
+          <p className="font-bold text-gray-700 mb-1 text-sm sm:text-base">📲 One last step!</p>
+          <p className="text-sm text-gray-500 mb-3 sm:mb-4">Download your book and send it to us on WhatsApp so we can print it exactly as you designed.</p>
           
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2 sm:gap-3">
             {/* FIXED: Working Download Button */}
             <button
               onClick={handleDownloadBook}
               disabled={downloading}
-              className="w-full bg-pink-600 text-white py-3 rounded-xl font-semibold hover:bg-pink-700 transition disabled:opacity-50"
+              className="w-full bg-pink-600 text-white py-2 sm:py-3 rounded-xl font-semibold hover:bg-pink-700 transition disabled:opacity-50 text-sm sm:text-base"
             >
               {downloading ? '⏳ Downloading...' : '⬇️ Step 1 — Download My Book'}
             </button>
@@ -188,13 +188,13 @@ const OrderForm = ({ book, onBack, onDownload }) => {
               href={getWhatsAppLink()}
               target="_blank"
               rel="noreferrer"
-              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition block text-center"
+              className="w-full bg-green-500 text-white py-2 sm:py-3 rounded-xl font-semibold hover:bg-green-600 transition block text-center text-sm sm:text-base"
             >
               💬 Step 2 — Send on WhatsApp
             </a>
           </div>
           
-          <p className="text-xs text-gray-400 mt-3">
+          <p className="text-xs text-gray-400 mt-2 sm:mt-3">
             💡 Tip: Download first → then open WhatsApp → attach the downloaded image from your gallery
           </p>
         </div>
@@ -210,71 +210,69 @@ const OrderForm = ({ book, onBack, onDownload }) => {
   }
 
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <button onClick={onBack} className="text-pink-500 hover:underline mb-6 block text-sm">← Back to Preview</button>
+    <div className="max-w-lg mx-auto p-3 sm:p-4">
+      <button onClick={onBack} className="text-pink-500 hover:underline mb-4 sm:mb-6 block text-sm">← Back to Preview</button>
       
-      <div className="bg-white rounded-2xl shadow-sm p-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-1">Get it printed 🖨️</h2>
-        <p className="text-gray-400 text-sm mb-6">Delivered to your door in Bangalore • Online payment only</p>
+      <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1">Get it printed 🖨️</h2>
+        <p className="text-gray-400 text-sm mb-4 sm:mb-6">Delivered to your door in Bangalore • Online payment only</p>
 
         {/* Package selection */}
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-4 sm:mb-6">
           {PACKAGES.map(p => (
             <div
               key={p.id}
               onClick={() => setPkg(p.id)}
-              className={`flex justify-between items-center p-4 rounded-xl border-2 cursor-pointer transition-colors ${
-                pkg === p.id ? 'border-pink-500 bg-pink-50' : 'border-gray-200 hover:border-pink-300'
-              }`}
+              className={`flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 sm:p-4 rounded-xl border-2 cursor-pointer transition-colors ${pkg === p.id ? 'border-pink-500 bg-pink-50' : 'border-gray-200 hover:border-pink-300'}`}
             >
-              <div>
-                <div className="font-semibold text-gray-800">{p.label}</div>
-                <div className="text-sm text-gray-500">{p.desc}</div>
+              <div className="mb-2 sm:mb-0">
+                <div className="font-semibold text-gray-800 text-sm sm:text-base">{p.label}</div>
+                <div className="text-xs sm:text-sm text-gray-500">{p.desc}</div>
               </div>
               <div className="text-lg font-bold text-pink-600">{p.price}</div>
             </div>
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
             <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="w-full border border-gray-200 rounded-xl px-3 sm:px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 text-sm sm:text-base"
               placeholder="Your name" />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Phone Number</label>
             <input required type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="w-full border border-gray-200 rounded-xl px-3 sm:px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 text-sm sm:text-base"
               placeholder="+91 XXXXX XXXXX" />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Delivery Address (Bangalore only)</label>
             <textarea required value={form.address} onChange={e => setForm({ ...form, address: e.target.value })}
-              rows={3} className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none"
+              rows={3} className="w-full border border-gray-200 rounded-xl px-3 sm:px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none text-sm sm:text-base"
               placeholder="House/Flat no, Street, Area, Bangalore" />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Pincode</label>
             <input required value={form.pincode} onChange={e => setForm({ ...form, pincode: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="w-full border border-gray-200 rounded-xl px-3 sm:px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 text-sm sm:text-base"
               placeholder="560001" />
           </div>
 
           {/* UPI Payment */}
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 space-y-3">
+          <div className="bg-green-50 border border-green-200 rounded-2xl p-3 sm:p-4 space-y-3">
             <div className="flex justify-between items-center">
-              <span className="font-semibold text-gray-700">Total to pay</span>
-              <span className="text-2xl font-bold text-green-600">{selectedPkg.price}</span>
+              <span className="font-semibold text-gray-700 text-sm sm:text-base">Total to pay</span>
+              <span className="text-xl sm:text-2xl font-bold text-green-600">{selectedPkg.price}</span>
             </div>
             <button
               type="button"
               onClick={openUPI}
-              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 text-base"
+              className="w-full bg-green-500 text-white py-2 sm:py-3 rounded-xl font-semibold hover:bg-green-600 text-sm sm:text-base"
             >
               💳 Pay {selectedPkg.price} via UPI
             </button>

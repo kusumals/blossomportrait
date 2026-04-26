@@ -71,18 +71,18 @@ const CoverEditor = ({ cover, onUpdate }) => {
         onCancel={() => setEditingSrc(null)}
       />
     )}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
       {/* Cover Preview */}
       <div>
-        <h3 className="font-semibold text-gray-700 mb-3">Cover Preview <span className="text-xs text-gray-400 font-normal">(click title to edit inline)</span></h3>
+        <h3 className="font-semibold text-gray-700 mb-3 text-sm sm:text-base">Cover Preview <span className="text-xs text-gray-400 font-normal">(click title to edit inline)</span></h3>
         <div
           ref={containerRef}
-          className="relative rounded-2xl overflow-hidden flex flex-col items-center p-6 w-[448px] mx-auto"
+          className="relative rounded-2xl overflow-hidden flex flex-col items-center p-4 sm:p-6 w-full max-w-[448px] mx-auto"
           style={{ backgroundColor: cover.color }}
           onClick={handleContainerClick}
         >
           {cover.photo ? (
-            <div className="relative mb-4 flex-shrink-0 overflow-hidden" style={{ width: '400px', height: '300px' }}>
+            <div className="relative mb-4 flex-shrink-0 overflow-hidden w-full max-w-[400px] aspect-[4/3]">
               <DraggablePhoto
                 src={cover.photo}
                 photoX={cover.photoX ?? 0}
@@ -94,16 +94,15 @@ const CoverEditor = ({ cover, onUpdate }) => {
             </div>
           ) : (
             <div
-              className="relative mb-4 flex-shrink-0 overflow-hidden flex items-center justify-center cursor-pointer border-2 border-dashed border-white/50"
+              className="relative mb-4 flex-shrink-0 overflow-hidden flex items-center justify-center cursor-pointer border-2 border-dashed border-white/50 w-full max-w-[400px] aspect-[4/3]"
               onClick={() => fileRef.current.click()}
-              style={{ width: '400px', height: '300px' }}
             >
-              <span className="text-white/70 text-sm">📷 Click to add cover photo</span>
+              <span className="text-white/70 text-xs sm:text-sm">📷 Click to add cover photo</span>
             </div>
           )}
 
           {/* Inline editable title with font support */}
-          <div className="w-full flex flex-col items-center justify-center py-8 px-6" style={{ backgroundColor: cover.color || '#FFB7C5' }}>
+          <div className="w-full flex flex-col items-center justify-center py-4 sm:py-8 px-4 sm:px-6" style={{ backgroundColor: cover.color || '#FFB7C5' }}>
             {editingTitle ? (
               <input
                 autoFocus
@@ -112,7 +111,7 @@ const CoverEditor = ({ cover, onUpdate }) => {
                 onChange={e => onUpdate({ title: e.target.value })}
                 onBlur={() => setEditingTitle(false)}
                 onKeyDown={e => e.key === 'Enter' && setEditingTitle(false)}
-                className="w-full text-center text-3xl font-bold text-gray-700 bg-white/70 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full text-center text-xl sm:text-3xl font-bold text-gray-700 bg-white/70 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
                 style={{
                   color: darkenColor(cover.color || '#FFB7C5', 80),
                   fontFamily: cover.titleFont || 'Dancing Script'
@@ -121,7 +120,7 @@ const CoverEditor = ({ cover, onUpdate }) => {
             ) : (
               <h2
                 onClick={() => setEditingTitle(true)}
-                className="text-3xl font-bold text-center break-words cursor-text hover:bg-white/30 rounded-lg px-2 py-1 transition-colors"
+                className="text-xl sm:text-3xl font-bold text-center break-words cursor-text hover:bg-white/30 rounded-lg px-2 py-1 transition-colors"
                 style={{
                   color: darkenColor(cover.color || '#FFB7C5', 80),
                   fontFamily: cover.titleFont || 'Dancing Script'
@@ -172,11 +171,11 @@ const CoverEditor = ({ cover, onUpdate }) => {
       </div>
 
       {/* Controls */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <input type="file" ref={fileRef} accept="image/*" onChange={handlePhoto} className="hidden" />
         <button
           onClick={() => fileRef.current.click()}
-          className="w-full py-2 border-2 border-dashed border-pink-300 rounded-xl text-pink-500 hover:bg-pink-50"
+          className="w-full py-2 px-3 sm:px-4 border-2 border-dashed border-pink-300 rounded-xl text-pink-500 hover:bg-pink-50 text-sm sm:text-base"
         >
           📷 {cover.photo ? 'Replace Cover Photo' : 'Add Cover Photo'}
         </button>
@@ -238,12 +237,13 @@ const CoverEditor = ({ cover, onUpdate }) => {
             value={cover.titleFont || 'Dancing Script'}
             onChange={e => onUpdate({ titleFont: e.target.value })}
             className="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
+            style={{ fontFamily: cover.titleFont || 'Dancing Script' }}
           >
-            <option value="Dancing Script">Dancing Script (Default)</option>
-            <option value="Georgia">Georgia (Classic)</option>
-            <option value="Comic Sans MS">Comic Sans MS (Fun)</option>
-            <option value="Lobster">Lobster (Bold)</option>
-            <option value="Pacifico">Pacifico (Playful)</option>
+            <option value="Dancing Script" style={{ fontFamily: 'Dancing Script' }}>Dancing Script</option>
+            <option value="Georgia" style={{ fontFamily: 'Georgia' }}>Georgia</option>
+            <option value="Comic Sans MS" style={{ fontFamily: 'Comic Sans MS' }}>Comic Sans MS</option>
+            <option value="Lobster" style={{ fontFamily: 'Lobster' }}>Lobster</option>
+            <option value="Pacifico" style={{ fontFamily: 'Pacifico' }}>Pacifico</option>
           </select>
         </div>
 
